@@ -14,10 +14,8 @@
     "umidity",
     "blockchain"
   ],
-  "author": {
-    "name": "Eduardo Basso",
-    "email": "eduardo.basso@br.ey.com"
-  },
+  "author": "Eduardo Basso <eduardo.basso@br.ey.com> (https://eduardobasso.github.io/)",
+  "contributors": [],
   "license": "ISC",
   "devDependencies": {
     "@babel/core": "^7.4.3",
