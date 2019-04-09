@@ -1,6 +1,6 @@
 # EY SupplyChain
 
-Aplicação para exibir dados coletados a partir de sensores (de temperatura e umidade) e armazenados em Blockchain.
+Aplicação para exibir dados coletados e armazenados em Blockchain a por meio de sensores de temperatura e umidade.
 
 ## Execução
 
@@ -10,16 +10,16 @@ A aplicação foi gerada através do [Webpack](https://webpack.js.org/guides/get
 
 ### Instalando os pacotes
 
-Após fazer o download do repositório, todas as dependências devem ser instaladas.
+Após fazer o download do repositório, todas as dependências devem ser instaladas localmente.
 
 Para instalar, executar o comando ```npm install``` na pasta raiz do projeto.
 
-#### 1. Ambiente de desenvolvimento
+#### Ambiente de desenvolvimento
 
 Para visualizar a aplicação em modo desenvolvimento, executar a task ```npm run dev``` na raiz do projeto.
 
-#### 2. Produção
+#### Build em produção
 
 Executar a task ```npm run build``` na raiz do projeto para gerar o build.
 
-Uma pasta ```dist``` será gerada contendo todo o código necessário para deploy em produção.
+Feito isso, será criada uma pasta ```dist``` contendo todo o código necessário para deploy em produção.
