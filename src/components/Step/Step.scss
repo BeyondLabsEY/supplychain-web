@@ -1,5 +1,8 @@
 @import "../../assets/scss/abstracts/all";
 
+$icons-font-path: "../../assets/fonts/custom-icons/";
+@import "../../assets/scss/icons";
+
 $icon-size: 48px;
 
 .step {

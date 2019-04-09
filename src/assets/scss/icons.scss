@@ -1,0 +1,84 @@
+$icons-font-path: "../fonts/custom-icons/" !default;
+
+@font-face {
+  font-family: "Custom Icons";
+  src:  url($icons-font-path + "CustomIcons.eot?b3qvq1");
+  src:  url($icons-font-path + "CustomIcons.eot?b3qvq1#iefix") format("embedded-opentype"),
+    url($icons-font-path + "CustomIcons.ttf?b3qvq1") format("truetype"),
+    url($icons-font-path + "CustomIcons.woff?b3qvq1") format("woff"),
+    url($icons-font-path + "CustomIcons.svg?b3qvq1#CustomIcons") format("svg");
+  font-style: normal;
+  font-weight: normal;
+}
+
+[class^="icon-"],
+[class*=" icon-"] {
+  font-family: "Custom Icons" !important;
+  font-size: 1.8rem;
+  font-style: normal;
+  font-weight: normal;
+  font-variant: normal;
+  text-transform: none;
+  line-height: 1;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  &.size-18 {
+    font-size: 18px !important;
+  }
+  &.size-24 {
+    font-size: 24px !important;
+  }
+  &.size-36 {
+    font-size: 36px !important;
+  }
+  &.size-48 {
+    font-size: 48px !important;
+  }
+}
+
+.icon-cattle,
+.icon-cow,
+.icon-farm {
+  &:before {
+    content: "\e900";
+  }
+}
+
+.icon-warehouse {
+  &:before {
+    content: "\e901";
+  }
+}
+
+.icon-store,
+.icon-market {
+  &:before {
+    content: "\e902";
+  }
+}
+
+.icon-temperature,
+.icon-air,
+.icon-cold,
+.icon-warm {
+  &:before {
+    content: "\e903";
+  }
+}
+
+.icon-humidity,
+.icon-rain,
+.icon-water,
+.icon-drop,
+.icon-drops {
+  &:before {
+    content: "\e904";
+  }
+}
+
+.icon-industry,
+.icon-factory {
+  &:before {
+    content: "\e905";
+  }
+}

@@ -1,0 +1,14 @@
+{
+    "name": "EY Supply Chain",
+    "short_name": "EY Supply Chain",
+    "icons": [
+        {
+            "src": "/android-chrome-48x48.png",
+            "sizes": "48x48",
+            "type": "image/png"
+        }
+    ],
+    "theme_color": "#f0f0f0",
+    "background_color": "#f0f0f0",
+    "display": "standalone"
+}
