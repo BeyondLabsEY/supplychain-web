@@ -1,0 +1,18 @@
+@import "./abstracts/all.scss";
+
+html {
+  background: $ey-gray-tint3;
+  background: linear-gradient(to right, transparentize($ey-gray-tint3, 0.1), transparentize($ey-gray-tint3, 0.2)), url('../img/bg.png');
+  background-repeat: no-repeat;
+  background-position: bottom right;
+  background-size: cover;
+  font-size: 18px;
+}
+
+body {
+  background-color: transparent;
+  color: $black;
+  font-family: 'Noto Sans', Arial, sans-serif;
+  font-size: 1em;
+  font-weight: $regular;
+}

@@ -1,0 +1,79 @@
+// Global defaults
+@import "./abstracts/all.scss";
+
+// Bootstrap
+@import "~bootstrap/scss/bootstrap";
+
+// MDBootstrap
+$roboto-font-path: "~mdbreact/dist/font/roboto/";
+$image-path: "~mdbreact/dist/img";
+@import "~mdbreact/dist/scss/mdb.scss";
+
+/*
+ * Custom styles
+ */
+
+.container {
+  min-width: 768px;
+}
+
+.btn-primary {
+  background-color: $ey-link-blue !important;
+  color: $white !important;
+  &:not([disabled]) {
+    &:not(.disabled) {
+      &:active,
+      &.active {
+        border-color: $ey-gray-tint2;
+        background-color: darken($ey-link-blue, 10%) !important;
+      }
+    }
+  }
+  &.disabled,
+  &:disabled {
+    -webkit-box-shadow: inset 0 2px 5px 0 rgba(0, 0, 0, 0.16), inset 0 2px 10px 0 rgba(0, 0, 0, 0.12);
+    box-shadow: inset 0 2px 5px 0 rgba(0, 0, 0, 0.16), inset 0 2px 10px 0 rgba(0, 0, 0, 0.12);
+    border-width: 0 !important;
+    background-color: $ey-gray-tint2 !important;
+    color: $ey-gray-tint1 !important;
+    opacity: 1;
+  }
+}
+
+.popover {
+  max-width: 600px;
+  -webkit-box-shadow: 0 1rem 3rem rgba(0,0,0,.175);
+  box-shadow: 0 1rem 3rem rgba(0,0,0,.175);
+  border-radius: .25rem;
+}
+
+.nav {
+  margin-bottom: 1rem;
+}
+
+.nav-pills {
+  .nav-link {
+    border-radius: .125rem;
+  }
+  .nav-link {
+    color: $black;
+    font-size: .625rem;
+    font-weight: $bold;
+    text-transform: uppercase;
+    opacity: .3;
+    -webkit-transition: color $default-transition, opacity $default-transition;
+    transition: color $default-transition, opacity $default-transition;
+    &.active {
+      background-color: transparent;
+      color: $ey-link-blue;
+      opacity: 1;
+      &:hover {
+        color: $ey-link-blue;
+        opacity: 1;
+      }
+    }
+    &:hover {
+      opacity: .7;
+    }
+  }
+}

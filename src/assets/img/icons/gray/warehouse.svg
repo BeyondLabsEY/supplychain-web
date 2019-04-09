@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 57.12 51.41">
+  <defs>
+    <style>
+      .b0619be3-062c-43b2-be68-274c837d738a {
+        fill: #999;
+      }
+    </style>
+  </defs>
+  <title>warehouse</title>
+  <g id="bdbd5402-2c23-47dc-8f7c-fd8b5e1243e8" data-name="Layer 2">
+    <g id="a2870282-89e6-4711-beeb-7a67c833abed" data-name="Layer 1">
+      <g>
+        <path class="b0619be3-062c-43b2-be68-274c837d738a" d="M56.35,11.59,29.21.17a1.33,1.33,0,0,0-1.31,0L.77,11.59A1.43,1.43,0,0,0,0,12.85V50a1.43,1.43,0,0,0,1.43,1.43H7.14A1.43,1.43,0,0,0,8.57,50V20h40V50A1.43,1.43,0,0,0,50,51.41h5.71A1.43,1.43,0,0,0,57.12,50V12.85A1.45,1.45,0,0,0,56.35,11.59Z"/>
+        <rect class="b0619be3-062c-43b2-be68-274c837d738a" x="15.71" y="39.98" width="11.42" height="11.42" rx="1.43"/>
+        <rect class="b0619be3-062c-43b2-be68-274c837d738a" x="29.99" y="39.98" width="11.42" height="11.42" rx="1.43"/>
+        <rect class="b0619be3-062c-43b2-be68-274c837d738a" x="22.85" y="25.7" width="11.42" height="11.42" rx="1.43"/>
+      </g>
+    </g>
+  </g>
+</svg>
