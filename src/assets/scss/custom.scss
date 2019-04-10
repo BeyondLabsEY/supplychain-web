@@ -61,24 +61,26 @@ $image-path: "~mdbreact/dist/img";
     border-radius: .125rem;
   }
   .nav-link {
+    padding: .75rem 1rem;
     color: $black;
     font-size: .625rem;
     font-weight: $bold;
     text-transform: uppercase;
     opacity: .3;
-    -webkit-transition: color $default-transition, opacity $default-transition;
-    transition: color $default-transition, opacity $default-transition;
+    -webkit-transition: background-color $default-transition color $default-transition, opacity $default-transition;
+    transition: background-color $default-transition color $default-transition, opacity $default-transition;
     &.active {
-      background-color: transparent;
+      background-color: transparentize($ey-link-blue, 0.9);
       color: $ey-link-blue;
       opacity: 1;
+      pointer-events: none !important;
       &:hover {
         color: $ey-link-blue;
         opacity: 1;
       }
     }
     &:hover {
-      opacity: .7;
+      opacity: .6;
     }
   }
 }

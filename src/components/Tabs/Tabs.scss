@@ -1,0 +1,21 @@
+@import "../../assets/scss/abstracts/ey-colors";
+
+.temperature-tab {
+  &.active {
+    background-color: transparentize($ey-purple, 0.9) !important;
+    color: $ey-purple !important;
+  }
+}
+
+.humidity-tab {
+  &.active {
+    background-color: transparentize($ey-blue, 0.9) !important;
+    color: $ey-blue !important;
+  }
+}
+
+.tab-title {
+  vertical-align: middle;
+  margin-right: .25rem;
+  margin-left: .5rem;
+}

@@ -31,19 +31,17 @@ const optionsData = {
     }
   },
 
-  yAxis: {
-    title: {
-      text: "Umidade (%)"
-    }
-  },
-
-  series: [{
-    name: "Umidade",
-    data: [91, 88, 80, 86, 90, 89, 88, 91, 87],
-  }],
+  series: [],
   
   legend: {
     enabled: false
+  },
+
+  tooltip: {
+    headerFormat: null,
+    pointFormat: '<span style="color:{series.color};">{series.name}: <strong>{point.y:,.0f}</strong></span>',
+    hideDelay: .15,
+    followTouchMove: false
   },
 
   responsive: {

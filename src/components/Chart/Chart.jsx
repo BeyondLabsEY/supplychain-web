@@ -1,7 +1,7 @@
 import React, { Component } from "react";
-import ReactDOM from 'react-dom';
 import Highcharts from 'highcharts';
 import HighchartsReact from 'highcharts-react-official';
+import _ from 'lodash';
 
 import optionsData from "./optionsData";
 
@@ -10,31 +10,20 @@ class Chart extends Component {
     super(props);
     this.state = {
       chartId: this.props.id || "chart",
-      chartOptions: optionsData
+      chartOptions: _.merge(optionsData, props.options)
     };
   }
 
-  mergeOptions() {
-    const presetOptions = optionsData;
-    const customOptions = this.props.options || {};
-    const mergedOptions = Object.assign(presetOptions, customOptions);
-    this.setState({
-      chartOptions: mergedOptions
-    });
-  }
-
-  componentWillMount() {
-    this.mergeOptions();
-  }
-
-  componentDidMount() {
-    const chartContainer = document.getElementById(this.state.chartId);
-    chartContainer ? ReactDOM.render(<HighchartsReact highcharts={Highcharts} options={this.state.chartOptions} />, chartContainer) : false;
-  }
-
   render() {
+    const { chartId, chartOptions } = this.state;
+
     return (
-      <div id={this.state.chartId}></div>
+      <div id={chartId}>
+        <HighchartsReact
+          highcharts={Highcharts}
+          options={chartOptions}
+        />
+      </div>
     );
   }
 }

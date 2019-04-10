@@ -3,7 +3,7 @@ import { MDBPopover, MDBPopoverBody, MDBBtn } from "mdbreact";
 
 import "./Step.scss";
 import Icon from "../Icon/Icon.jsx";
-import ChartTabs from "../ChartTabs/ChartTabs.jsx";
+import ChartTabs from "../Tabs/Tabs.jsx";
 
 class Step extends Component {
   constructor(props) {
