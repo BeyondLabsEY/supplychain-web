@@ -1,5 +1,6 @@
 @import "../../assets/scss/abstracts/all";
 
+$border-size: 4px;
 $icon-size: 48px;
 
 .step {
@@ -34,14 +35,17 @@ $icon-size: 48px;
       max-width: $icon-size;
       max-height: $icon-size;
     }
+    & + div {
+      display: initial !important;
+    }
   }
   &:after,
   &:before {
     position: absolute;
-    bottom: $icon-size;
+    bottom: $icon-size - $border-size;
     z-index: -1;
     width: 50%;
-    height: 20px;
+    height: $icon-size / 2;
     background-color: $white;
     content: "";
   }

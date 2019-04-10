@@ -1,8 +1,9 @@
 import React, { Component } from "react";
-import { MDBBtn } from "mdbreact";
+import { MDBPopover, MDBPopoverBody, MDBBtn } from "mdbreact";
 
 import "./Step.scss";
 import Icon from "../Icon/Icon.jsx";
+import ChartTabs from "../ChartTabs/ChartTabs.jsx";
 
 class Step extends Component {
   constructor(props) {
@@ -15,6 +16,7 @@ class Step extends Component {
 
   render() {
     const title = (this.props.disabled) ? "title disabled" : "title";
+    const popoverId = `popover${this.capitalize(this.props.icon)}`;
     const btnId = `btnToggle${this.capitalize(this.props.icon)}`;
 
     return (
@@ -22,9 +24,14 @@ class Step extends Component {
         <div className={title}>
           <span aria-hidden="true">{this.props.title}</span>
         </div>
-        <MDBBtn color="primary" disabled={this.props.disabled} className="indicator" type="button" id={btnId} aria-label={this.props.title}>
-          <Icon name={this.props.icon} size={48} />
-        </MDBBtn>
+        <MDBPopover placement="bottom" popover clickable id={popoverId}>
+          <MDBBtn color="primary" disabled={this.props.disabled} className="indicator" type="button" id={btnId} aria-label={this.props.title}>
+            <Icon name={this.props.icon} size={48} />
+          </MDBBtn>
+          <MDBPopoverBody>
+            <ChartTabs />
+          </MDBPopoverBody>
+        </MDBPopover>
       </div>
     );
   }

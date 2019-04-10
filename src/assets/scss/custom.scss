@@ -47,6 +47,11 @@ $image-path: "~mdbreact/dist/img";
   border-radius: .25rem;
 }
 
+.popover-body {
+  min-width: 550px;
+  min-height: 400px;
+}
+
 .nav {
   margin-bottom: 1rem;
 }

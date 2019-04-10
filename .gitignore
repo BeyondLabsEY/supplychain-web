@@ -2,10 +2,10 @@
 /node_modules
 
 # production
-/build
+/dist
 
 # logs
 npm-debug.log*
 
-# local
+# OS
 .DS_Store
