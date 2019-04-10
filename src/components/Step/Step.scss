@@ -1,7 +1,13 @@
 @import "../../assets/scss/abstracts/all";
 
 $border-size: 4px;
+$button-size: 105px;
 $icon-size: 48px;
+
+@mixin font-size($sizeValue: 1.6) {
+  font-size: ($sizeValue * 10) + px;
+  font-size: $sizeValue + rem;
+}
 
 .step {
   flex-grow: 1;
@@ -26,8 +32,8 @@ $icon-size: 48px;
     align-items: center;
     justify-content: center;
     margin: 1.25rem auto .25rem;
-    width: 105px;
-    height: 105px;
+    width: $button-size;
+    height: $button-size;
     border: 4px $white solid;
     border-radius: 50%;
     padding: 0;
@@ -63,6 +69,16 @@ $icon-size: 48px;
   &:last-child {
     &:after {
       display: none;
+    }
+  }
+  &.enabled {
+    &:before {
+      background-color: $ey-link-blue;
+    }
+    &:not(.current) {
+      &:after {
+        background-color: $ey-link-blue;
+      }
     }
   }
 }

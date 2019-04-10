@@ -12,6 +12,7 @@ class Stepper extends Component {
         title={step.title}
         icon={step.icon}
         disabled={step.disabled}
+        current={step.current}
       />
     );
 
