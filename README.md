@@ -1,4 +1,4 @@
-# EY SupplyChain
+# EY Supply Chain
 
 <p>
   <img src="./screenshot.png" alt="Tela da aplicação EY Supply Chain" />
