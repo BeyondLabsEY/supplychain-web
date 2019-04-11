@@ -7,10 +7,6 @@ const temperatureChartOptionsData = {
 
   colors: ["#91278f"],
 
-  xAxis: {
-    type: "datetime"
-  },
-
   yAxis: {
     title: {
       text: "Temperatura (°C)"
@@ -29,7 +25,7 @@ const temperatureChartOptionsData = {
   }],
 
   tooltip: {
-    formatter: function() {
+    formatter() {
       return (`
         <span style="color: ${this.series.color};">${this.series.name}</span>
         <strong>${this.y}°C</strong>

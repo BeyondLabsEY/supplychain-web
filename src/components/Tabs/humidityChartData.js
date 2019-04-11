@@ -6,10 +6,6 @@ const humidityChartOptionsData = {
   },
 
   colors: ["#00a3ae"],
-
-  xAxis: {
-    type: "datetime"
-  },
   
   yAxis: {
     title: {
@@ -18,7 +14,7 @@ const humidityChartOptionsData = {
   },
   
   series: [{
-    name: 'Umidade',
+    name: "Umidade",
     data: [
       [1554918943, 63],
       [1554918954, 63],
@@ -29,7 +25,7 @@ const humidityChartOptionsData = {
   }],
 
   tooltip: {
-    formatter: function() {
+    formatter() {
       return (`
         <span style="color: ${this.series.color};">${this.series.name}</span>
         <strong>${this.y}%</strong>

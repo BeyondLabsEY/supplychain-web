@@ -7,6 +7,7 @@ const optionsData = {
       fontFamily: "\"Noto Sans\", Arial, sans-serif"
     }
   },
+  
   title: {
     text: null,
     style: {
@@ -28,7 +29,8 @@ const optionsData = {
     },
     labels: {
       enabled: false
-    }
+    },
+    type: "datetime"
   },
 
   yAxis: {
@@ -43,7 +45,7 @@ const optionsData = {
 
   tooltip: {
     headerFormat: null,
-    formatter: function() {
+    formatter() {
       return (`
         <span style="color: ${this.series.color};">${this.series.name}</span>
         <strong>${this.y}%</strong>
