@@ -17,6 +17,10 @@ class ChartTabs extends Component {
         humidity: {
           isActive: false
         }
+      },
+      chartOptions: {
+        temperature: temperatureChartData,
+        humidity: humidityChartData
       }
     };
     this.changeTab = this.changeTab.bind(this);
@@ -36,7 +40,7 @@ class ChartTabs extends Component {
   }
 
   render() {
-    const { tabs } = this.state;
+    const { tabs, chartOptions } = this.state;
 
     return (
       <Fragment>
@@ -57,12 +61,12 @@ class ChartTabs extends Component {
         <div className="tab-content">
           {(tabs.temperature.isActive) ?
             <div role="tabpanel" className={(tabs.temperature.isActive) ? "tab-pane active" : "tab-pane"} id="farmTemperatureTab">
-              <Chart id="farmTemperatureChart" options={temperatureChartData} />
+              <Chart id="farmTemperatureChart" options={chartOptions.temperature} />
             </div>
           : null}
           {(tabs.humidity.isActive) ?
             <div role="tabpanel" className={(tabs.humidity.isActive) ? "tab-pane active" : "tab-pane"} id="farmHumidityTab">
-              <Chart id="farmHumidityChart" options={humidityChartData} />
+              <Chart id="farmHumidityChart" options={chartOptions.humidity} />
             </div>
           : null}
         </div>

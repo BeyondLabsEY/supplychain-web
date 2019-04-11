@@ -31,6 +31,10 @@ const optionsData = {
     }
   },
 
+  yAxis: {
+    allowDecimals: false
+  },
+
   series: [],
   
   legend: {
@@ -39,7 +43,12 @@ const optionsData = {
 
   tooltip: {
     headerFormat: null,
-    pointFormat: '<span style="color:{series.color};">{series.name}: <strong>{point.y:,.0f}</strong></span>',
+    formatter: function() {
+      return (`
+        <span style="color: ${this.series.color};">${this.series.name}</span>
+        <strong>${this.y}%</strong>
+      `);
+    },
     hideDelay: .15,
     followTouchMove: false
   },
