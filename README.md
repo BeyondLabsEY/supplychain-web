@@ -2,15 +2,19 @@
 
 Aplicação para exibir dados coletados e armazenados em Blockchain a por meio de sensores de temperatura e umidade.
 
-## Execução
+<p align="center">
+  <img src="./screenshot.png" alt="Tela da aplicação EY Supply Chain" width="654" />
+</p>
 
 Esse repositório contém toda a estrutura da camada de front-end (que é executada no client).
+
+## Executando localmente
 
 A aplicação foi gerada através do [Webpack](https://webpack.js.org/guides/getting-started/) e contém várias dependências do [Node](https://docs.npmjs.com/downloading-and-installing-node-js-and-npm).
 
 ### Instalando os pacotes
 
-Após fazer o download do repositório, todas as dependências devem ser instaladas localmente.
+Após fazer o download do repositório, todas as dependências do Node devem ser instaladas localmente.
 
 Para instalar, executar o comando ```npm install``` na pasta raiz do projeto.
 
