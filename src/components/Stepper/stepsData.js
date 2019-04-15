@@ -3,15 +3,15 @@ const stepsData = [
     id: 1,
     title: "Fazenda",
     icon: "farm",
-    disabled: true,
+    disabled: false,
     current: false
   },
   {
     id: 2,
     title: "Indústria",
     icon: "industry",
-    disabled: true,
-    current: false
+    disabled: false,
+    current: true
   },
   {
     id: 3,

@@ -1,4 +1,10 @@
-@import "./abstracts/all.scss";
+@import url("https://fonts.googleapis.com/css?family=Noto+Sans:400,700");
+
+$ey-font-path: "../fonts/ey-interstate/";
+@import "./abstracts/ey-font";
+
+@import "./abstracts/ey-colors";
+@import "./abstracts/variables";
 
 $image-path: "../img" !default;
 
@@ -14,7 +20,7 @@ html {
 body {
   background-color: transparent;
   color: $black;
-  font-family: 'Noto Sans', Arial, sans-serif;
+  font-family: "EYInterstate", "Noto Sans", Arial, sans-serif;
   font-size: 1em;
   font-weight: $regular;
 }

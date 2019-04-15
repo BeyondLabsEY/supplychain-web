@@ -4,7 +4,7 @@ const optionsData = {
     width: 550,
     height: 400,
     style: {
-      fontFamily: "\"Noto Sans\", Arial, sans-serif"
+      fontFamily: "\"EYInterstate\", \"Noto Sans\", Arial, sans-serif"
     }
   },
   

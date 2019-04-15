@@ -1,13 +1,14 @@
-// Global defaults
-@import "./abstracts/all.scss";
-
 // Bootstrap
 @import "~bootstrap/scss/bootstrap";
 
 // MDBootstrap
 $roboto-font-path: "~mdbreact/dist/font/roboto/";
 $image-path: "~mdbreact/dist/img";
-@import "~mdbreact/dist/scss/mdb.scss";
+@import "~mdbreact/dist/scss/mdb";
+
+// Global defaults
+@import "./abstracts/ey-colors";
+@import "./abstracts/variables";
 
 /*
  * Custom styles
@@ -45,6 +46,7 @@ $image-path: "~mdbreact/dist/img";
   -webkit-box-shadow: 0 1rem 3rem rgba(0,0,0,.175);
   box-shadow: 0 1rem 3rem rgba(0,0,0,.175);
   border-radius: .25rem;
+  font-family: inherit;
 }
 
 .popover-body {
