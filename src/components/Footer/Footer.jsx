@@ -7,7 +7,8 @@ class Footer extends Component {
   render() {
     return (
       <footer>
-        <img src={Copyright} alt="Created by BeyondLabsEY" height="18" lang="en" translate="no" />
+        <p className="sr-only" lang="en" translate="no">Created by BeyondLabsEY</p>
+        <img className="copyright" src={Copyright} alt="Frase de rodapé contando o aviso de direito autoral" />
       </footer>
     );
   }

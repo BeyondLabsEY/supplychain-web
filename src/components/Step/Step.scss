@@ -1,5 +1,4 @@
 @import "../../assets/scss/abstracts/ey-colors";
-@import "../../assets/scss/abstracts/variables";
 
 $border-size: 4px;
 $button-size: 105px;
@@ -16,8 +15,7 @@ $icon-size: 48px;
   text-align: center;
   .title {
     color: $ey-link-blue;
-    font-size: .925em;
-    font-weight: $bold;
+    font-size: .975em;
     span {
       display: block;
       margin: 0 auto;
