@@ -1,31 +1,35 @@
 const stepsData = [
   {
-    id: 1,
+    id: "1",
     title: "Fazenda",
     icon: "farm",
-    disabled: false,
-    current: false
+    disabled: true,
+    current: false,
+    measuresId: "1"
   },
   {
-    id: 2,
+    id: "2",
     title: "Indústria",
     icon: "industry",
-    disabled: false,
-    current: true
+    disabled: true,
+    current: false,
+    measuresId: "1"
   },
   {
-    id: 3,
+    id: "3",
     title: "Centro de Distribuição",
     icon: "warehouse",
     disabled: true,
-    current: false
+    current: false,
+    measuresId: "1"
   },
   {
-    id: 4,
+    id: "4",
     title: "Mercado",
     icon: "market",
     disabled: true,
-    current: false
+    current: false,
+    measuresId: "1"
   }
 ];
 

@@ -15,13 +15,7 @@ const temperatureChartOptionsData = {
 
   series: [{
     name: "Temperatura",
-    data: [
-      [1554918943, 24],
-      [1554918954, 27],
-      [1554918972, 25],
-      [1554918980, 25],
-      [1554919006, 27]
-    ]
+    data: []
   }],
 
   tooltip: {

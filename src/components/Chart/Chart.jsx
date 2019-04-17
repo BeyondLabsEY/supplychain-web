@@ -8,17 +8,18 @@ import optionsData from "./optionsData";
 class Chart extends Component {
   constructor(props) {
     super(props);
+
     this.state = {
-      chartId: this.props.id || "chart",
+      chartElementId: this.props.id || "chart",
       chartOptions: _.merge(optionsData, props.options)
     };
   }
 
   render() {
-    const { chartId, chartOptions } = this.state;
+    const { chartElementId, chartOptions } = this.state;
 
     return (
-      <div id={chartId}>
+      <div id={chartElementId}>
         <HighchartsReact
           highcharts={Highcharts}
           options={chartOptions}

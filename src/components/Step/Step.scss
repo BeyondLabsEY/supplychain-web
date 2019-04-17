@@ -1,4 +1,5 @@
 @import "../../assets/scss/abstracts/ey-colors";
+@import "../../assets/scss/abstracts/variables";
 
 $border-size: 4px;
 $button-size: 105px;
@@ -52,6 +53,8 @@ $icon-size: 48px;
     height: $icon-size / 2;
     background-color: $white;
     content: "";
+    -webkit-transition: background-color $default-transition;
+    transition: background-color $default-transition;
   }
   &:after {
     right: 0;

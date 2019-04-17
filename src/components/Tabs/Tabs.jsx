@@ -6,9 +6,13 @@ import humidityChartData from "./humidityChartData";
 import Icon from "../Icon/Icon.jsx";
 import Chart from "../Chart/Chart.jsx";
 
-class ChartTabs extends Component {
+const API_URL = "https://5cb612fa07f233001424dade.mockapi.io";
+const MEASURES_ENDPOINT = "measures";
+
+class Tabs extends Component {
   constructor(props) {
     super(props);
+
     this.state = {
       tabs: {
         temperature: {
@@ -21,7 +25,9 @@ class ChartTabs extends Component {
       chartOptions: {
         temperature: temperatureChartData,
         humidity: humidityChartData
-      }
+      },
+      loaded: false,
+      error: false
     };
     this.changeTab = this.changeTab.bind(this);
   }
@@ -39,8 +45,48 @@ class ChartTabs extends Component {
     });
   }
 
+  handleError() {
+    this.setState({
+      steps: stepsData,
+      loaded: true,
+      error: true
+    });
+  }
+
+  fetchData() {
+    this.setState({
+      loaded: false,
+      error: false
+    });
+
+    const measuresId = this.props.measuresId || "1";
+
+    fetch(`${API_URL}/${MEASURES_ENDPOINT}/${measuresId}`).then(response => response.json()).then((data) => {
+      try {
+        temperatureChartData.series[0].data = data.sd.tc.map((measure) => [measure.d, measure.t]);
+        humidityChartData.series[0].data = data.sd.ut.map((measure) => [measure.d, measure.u]);
+
+        this.setState({
+          chartOptions: {
+            temperature: temperatureChartData,
+            humidity: humidityChartData
+          },
+          loaded: true
+        });
+      } catch {
+        this.handleError();
+      }
+    }, (error) => {
+      this.handleError();
+    });
+  }
+
+  componentDidMount() {
+    this.fetchData();
+  }
+
   render() {
-    const { tabs, chartOptions } = this.state;
+    const { tabs, chartOptions, loaded } = this.state;
 
     return (
       <Fragment>
@@ -59,12 +105,12 @@ class ChartTabs extends Component {
           </li>
         </ul>
         <div className="tab-content">
-          {(tabs.temperature.isActive) ?
+          {(tabs.temperature.isActive && loaded) ?
             <div role="tabpanel" className={(tabs.temperature.isActive) ? "tab-pane active" : "tab-pane"} id="farmTemperatureTab">
               <Chart id="farmTemperatureChart" options={chartOptions.temperature} />
             </div>
           : null}
-          {(tabs.humidity.isActive) ?
+          {(tabs.humidity.isActive && loaded) ?
             <div role="tabpanel" className={(tabs.humidity.isActive) ? "tab-pane active" : "tab-pane"} id="farmHumidityTab">
               <Chart id="farmHumidityChart" options={chartOptions.humidity} />
             </div>
@@ -75,4 +121,4 @@ class ChartTabs extends Component {
   }
 }
 
-export default ChartTabs;
+export default Tabs;
