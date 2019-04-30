@@ -4,7 +4,7 @@ import { MDBContainer } from 'mdbreact';
 import "./Wrapper.scss";
 import Header from "../Header/Header.jsx";
 import Footer from "../Footer/Footer.jsx";
-import Stepper from "../Stepper/Stepper.jsx";
+import Truck from "../Truck/Truck.jsx";
 
 class Wrapper extends Component {
   render() {
@@ -23,7 +23,7 @@ class Wrapper extends Component {
           <MDBContainer>
             <div className="row">
               <div className="col">
-                <Stepper />
+                <Truck />
               </div>
             </div>
           </MDBContainer>

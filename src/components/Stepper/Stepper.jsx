@@ -1,12 +1,14 @@
 import React, { Component } from "react";
+import _ from 'lodash';
 
 import "./Stepper.scss";
 import stepsData from "./stepsData";
 import Step from "../Step/Step.jsx";
 
-const API_URL = "https://5cb612fa07f233001424dade.mockapi.io";
+const API_URL = "https://ikfprgiyxd.execute-api.us-east-1.amazonaws.com";
+const API_VERSION = "v1";
 const STEPS_ENDPOINT = "steps";
-const REQUEST_INTERVAL_MINUTES = 1;
+const REQUEST_INTERVAL_SECONDS = 5;
 
 class Stepper extends Component {
   constructor(props) {
@@ -14,42 +16,29 @@ class Stepper extends Component {
 
     this.state = {
       steps: stepsData,
-      loaded: false,
-      error: false
+      firstLoaded: false
     };
   }
 
-  handleError() {
-    this.setState({
-      steps: stepsData,
-      loaded: true,
-      error: true
-    });
-  }
-
-  fetchData() {
-    this.setState({
-      loaded: false,
-      error: false
-    });
+  fetchStepsData() {
+    const { truckId } = this.props;
     
-    fetch(`${API_URL}/${STEPS_ENDPOINT}`).then(response => response.json()).then((data) => {
-      try {
+    if (truckId) {
+      fetch(`${API_URL}/${API_VERSION}/${STEPS_ENDPOINT}?truck=${truckId}`).then(response => response.json()).then((data) => {
         this.setState({
           steps: data || stepsData,
-          loaded: true
+          firstLoaded: true
         });
-      } catch {
-        this.handleError();
-      }
-    }, (error) => {
-      this.handleError();
-    });
+      });
+    }
+  }
+
+  shouldComponentUpdate(nextProp, nextState) {
+    return (! _.isEqual(this.state.steps, nextState.steps));
   }
 
   componentDidMount() {
-    this.fetchData();
-    this.inverval = setInterval(() => (this.fetchData()), (60 * REQUEST_INTERVAL_MINUTES * 1000));
+    this.inverval = setInterval(() => (this.fetchStepsData()), (REQUEST_INTERVAL_SECONDS * 1000));
   }
 
   componentWillUnmount() {
@@ -57,19 +46,23 @@ class Stepper extends Component {
   }
 
   render() {
-    const Steps = this.state.steps.map(step =>
+    const { truckId } = this.props;
+    const { steps, firstLoaded } = this.state;
+    const stepperClass = (firstLoaded) ? "stepper" : "stepper loading";
+    const Steps = steps.map(step =>
       <Step
-        key={step.id}
+        id={step.id}
         title={step.title}
         icon={step.icon}
-        disabled={step.disabled}
+        disabled={step.disable}
         current={step.current}
-        measuresId={step.measuresId}
+        truckId={truckId}
+        key={step.id}
       />
     );
 
     return (
-      <div className="stepper">
+      <div className={stepperClass}>
         {Steps}
       </div>
     );

@@ -1,4 +1,5 @@
 import React, { Component, Fragment } from "react";
+import ReactLoading from 'react-loading';
 
 import "./Tabs.scss";
 import temperatureChartData from "./temperatureChartData";
@@ -6,8 +7,9 @@ import humidityChartData from "./humidityChartData";
 import Icon from "../Icon/Icon.jsx";
 import Chart from "../Chart/Chart.jsx";
 
-const API_URL = "https://5cb612fa07f233001424dade.mockapi.io";
-const MEASURES_ENDPOINT = "measures";
+const API_URL = "https://ikfprgiyxd.execute-api.us-east-1.amazonaws.com";
+const API_VERSION = "v1";
+const SENSOR_ENDPOINT = "sensor";
 
 class Tabs extends Component {
   constructor(props) {
@@ -26,8 +28,7 @@ class Tabs extends Component {
         temperature: temperatureChartData,
         humidity: humidityChartData
       },
-      loaded: false,
-      error: false
+      firstLoaded: false
     };
     this.changeTab = this.changeTab.bind(this);
   }
@@ -45,39 +46,20 @@ class Tabs extends Component {
     });
   }
 
-  handleError() {
-    this.setState({
-      steps: stepsData,
-      loaded: true,
-      error: true
-    });
-  }
-
   fetchData() {
-    this.setState({
-      loaded: false,
-      error: false
-    });
+    const { truckId, stepId } = this.props;
 
-    const measuresId = this.props.measuresId || "1";
+    fetch(`${API_URL}/${API_VERSION}/${SENSOR_ENDPOINT}/?truck=${truckId}&step=${stepId}`).then(response => response.json()).then((data) => {
+      temperatureChartData.series[0].data = data.t.map((point) => [point.d, point.t]);
+      humidityChartData.series[0].data = data.h.map((point) => [point.d, point.h]);
 
-    fetch(`${API_URL}/${MEASURES_ENDPOINT}/${measuresId}`).then(response => response.json()).then((data) => {
-      try {
-        temperatureChartData.series[0].data = data.sd.tc.map((measure) => [measure.d, measure.t]);
-        humidityChartData.series[0].data = data.sd.ut.map((measure) => [measure.d, measure.u]);
-
-        this.setState({
-          chartOptions: {
-            temperature: temperatureChartData,
-            humidity: humidityChartData
-          },
-          loaded: true
-        });
-      } catch {
-        this.handleError();
-      }
-    }, (error) => {
-      this.handleError();
+      this.setState({
+        chartOptions: {
+          temperature: temperatureChartData,
+          humidity: humidityChartData
+        },
+        firstLoaded: true
+      });
     });
   }
 
@@ -86,7 +68,47 @@ class Tabs extends Component {
   }
 
   render() {
-    const { tabs, chartOptions, loaded } = this.state;
+    const { tabs, chartOptions, firstLoaded } = this.state;
+    const TemperatureTabContent = () => (
+      <div role="tabpanel" className={(tabs.temperature.isActive) ? "tab-pane active" : "tab-pane"} id="farmTemperatureTab">
+        <Chart id="farmTemperatureChart" options={chartOptions.temperature} />
+      </div>
+    );
+    const HumidityTabContent = () => (
+      <div role="tabpanel" className={(tabs.humidity.isActive) ? "tab-pane active" : "tab-pane"} id="farmHumidityTab">
+        <Chart id="farmHumidityChart" options={chartOptions.humidity} />
+      </div>
+    );
+    const TabContent = () => {
+      if (firstLoaded) {
+        if (tabs.temperature.isActive) {
+          return (
+            <div className="tab-content">
+              <TemperatureTabContent />
+            </div>
+          );
+        } else if (tabs.humidity.isActive) {
+          return (
+            <div className="tab-content">
+              <HumidityTabContent />
+            </div>
+          );
+        }
+      } else {
+        return (
+          <div className="tab-content">
+            <div className="content-loading">
+              <ReactLoading
+                type="bubbles"
+                color="#c0c0c0"
+                height={48}
+                width={48}
+              />
+            </div>
+          </div>
+        );
+      }
+    }
 
     return (
       <Fragment>
@@ -104,18 +126,7 @@ class Tabs extends Component {
             </a>
           </li>
         </ul>
-        <div className="tab-content">
-          {(tabs.temperature.isActive && loaded) ?
-            <div role="tabpanel" className={(tabs.temperature.isActive) ? "tab-pane active" : "tab-pane"} id="farmTemperatureTab">
-              <Chart id="farmTemperatureChart" options={chartOptions.temperature} />
-            </div>
-          : null}
-          {(tabs.humidity.isActive && loaded) ?
-            <div role="tabpanel" className={(tabs.humidity.isActive) ? "tab-pane active" : "tab-pane"} id="farmHumidityTab">
-              <Chart id="farmHumidityChart" options={chartOptions.humidity} />
-            </div>
-          : null}
-        </div>
+        <TabContent />
       </Fragment>
     );
   }

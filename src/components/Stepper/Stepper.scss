@@ -1,4 +1,19 @@
+@keyframes blink {
+  0% {
+    opacity: .6;
+  }
+  50% {
+    opacity: .9;
+  }
+  100% {
+    opacity: .6;
+  }
+}
+
 .stepper {
   display: flex;
   align-items: flex-end;
+  &.loading {
+    animation: blink .9s linear infinite;
+  }
 }
