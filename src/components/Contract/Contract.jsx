@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { MDBBtn, MDBIcon } from "mdbreact";
+import { MDBBtn } from "mdbreact";
 
 import "./Contract.scss";
 
@@ -50,8 +50,7 @@ class Contract extends Component {
           role="button"
           color="primary"
           size="sm"
-          disabled={notLoaded}
-          title="Abrir histórico em uma nova aba">
+          disabled={notLoaded}>
             <span>Ver transações</span>
           </MDBBtn>
       </div>
