@@ -5,6 +5,7 @@ import "./Wrapper.scss";
 import Header from "../Header/Header.jsx";
 import Footer from "../Footer/Footer.jsx";
 import Truck from "../Truck/Truck.jsx";
+import Contract from "../Contract/Contract.jsx";
 
 class Wrapper extends Component {
   render() {
@@ -24,6 +25,11 @@ class Wrapper extends Component {
             <div className="row">
               <div className="col">
                 <Truck />
+              </div>
+            </div>
+            <div className="row">
+              <div className="col">
+                <Contract />
               </div>
             </div>
           </MDBContainer>

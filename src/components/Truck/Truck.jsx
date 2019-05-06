@@ -14,7 +14,7 @@ class Truck extends Component {
 
     this.state = {
       truck: {
-        truckId: null
+        truckId: null,
       },
       firstLoaded: false
     };
@@ -32,7 +32,7 @@ class Truck extends Component {
   }
 
   componentDidMount() {
-    this.fetchTruckData();
+    this.fetchTruckData()
     this.inverval = setInterval(() => (this.fetchTruckData()), (REQUEST_INTERVAL_SECONDS * 1000));
   }
 
@@ -44,7 +44,7 @@ class Truck extends Component {
     const { truck, firstLoaded } = this.state;
     const { truckId } = truck;
 
-    return(
+    return (
       <Fragment>
         <Stepper truckId={truckId} />
         <div className="truck-info">

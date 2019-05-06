@@ -41,6 +41,10 @@ $image-path: "~mdbreact/dist/img";
   }
 }
 
+.btn-sm {
+  border-radius: 10em;
+}
+
 .popover {
   max-width: 600px;
   -webkit-box-shadow: 0 1rem 3rem transparentize($black, 0.825);
