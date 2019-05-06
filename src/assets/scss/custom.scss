@@ -32,8 +32,8 @@ $image-path: "~mdbreact/dist/img";
   }
   &.disabled,
   &:disabled {
-    -webkit-box-shadow: inset 0 2px 5px 0 rgba(0, 0, 0, 0.16), inset 0 2px 10px 0 rgba(0, 0, 0, 0.12);
-    box-shadow: inset 0 2px 5px 0 rgba(0, 0, 0, 0.16), inset 0 2px 10px 0 rgba(0, 0, 0, 0.12);
+    -webkit-box-shadow: inset 0 2px 5px 0 transparentize($black, 0.84), inset 0 2px 10px 0 transparentize($black, 0.88);
+    box-shadow: inset 0 2px 5px 0 transparentize($black, 0.84), inset 0 2px 10px 0 transparentize($black, 0.88);
     border-width: 0 !important;
     background-color: $ey-gray-tint2 !important;
     color: $ey-gray-tint1 !important;
@@ -43,10 +43,30 @@ $image-path: "~mdbreact/dist/img";
 
 .popover {
   max-width: 600px;
-  -webkit-box-shadow: 0 1rem 3rem rgba(0,0,0,.175);
-  box-shadow: 0 1rem 3rem rgba(0,0,0,.175);
+  -webkit-box-shadow: 0 1rem 3rem transparentize($black, 0.825);
+  box-shadow: 0 1rem 3rem transparentize($black, 0.825);
   border-radius: .25rem;
   font-family: inherit;
+  &.bs-popover-top {
+    margin-top: .5rem;
+    margin-bottom: 0;
+    & > .arrow {
+      top: calc((0.5rem + 1px) * -1);
+      bottom: auto;
+      &:before {
+        top: 0;
+        bottom: auto;
+        border-width: 0 0.5rem 0.5rem 0.5rem;
+        border-bottom-color: transparentize($black, 0.75);
+      }
+      &:after {
+        top: 1px;
+        bottom: auto;
+        border-width: 0 0.5rem 0.5rem 0.5rem;
+        border-bottom-color: $white;
+      }
+    }
+  }
 }
 
 .popover-body {

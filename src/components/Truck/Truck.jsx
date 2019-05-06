@@ -6,7 +6,7 @@ import Stepper from "../Stepper/Stepper.jsx";
 const API_URL = "https://ikfprgiyxd.execute-api.us-east-1.amazonaws.com";
 const API_VERSION = "v1";
 const TRUCK_ENDPOINT = "truck";
-const REQUEST_INTERVAL_MINUTES = 1;
+const REQUEST_INTERVAL_SECONDS = 30;
 
 class Truck extends Component {
   constructor(props) {
@@ -33,7 +33,7 @@ class Truck extends Component {
 
   componentDidMount() {
     this.fetchTruckData();
-    this.inverval = setInterval(() => (this.fetchTruckData()), (60 * REQUEST_INTERVAL_MINUTES * 1000));
+    this.inverval = setInterval(() => (this.fetchTruckData()), (REQUEST_INTERVAL_SECONDS * 1000));
   }
 
   componentWillUnmount() {

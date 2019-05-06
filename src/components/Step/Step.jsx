@@ -22,7 +22,7 @@ class Step extends Component {
         <div className={titleClass}>
           <span aria-hidden="true">{title}</span>
         </div>
-        <MDBPopover placement="bottom" popover clickable id={popoverElementId}>
+        <MDBPopover placement="top" popover clickable id={popoverElementId}>
           <MDBBtn color="primary" disabled={disabled} className={(current) ? "indicator current" : "indicator"} type="button" id={btnElementId} aria-label={title}>
             <Icon name={icon} size={48} />
           </MDBBtn>

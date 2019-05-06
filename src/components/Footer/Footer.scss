@@ -1,7 +1,12 @@
 footer {
-  font-size: .825em;
+  font-size: .75em;
   text-align: center;
+  opacity: 9;
   p {
-    margin: .5rem;
+    margin: .75rem 0 0;
+  }
+  .logo {
+    max-width: 70px;
+    max-height: 36px;
   }
 }
