@@ -39,10 +39,11 @@ class Contract extends Component {
 
   render() {
     const { contract, firstLoaded } = this.state;
+    const contractInfoClass = (firstLoaded) ? "contract-info" : "contract-info loading";
     const notLoaded = ! firstLoaded;
 
     return (
-      <div className="contract-info">
+      <div className={contractInfoClass}>
         <MDBBtn
           tag="a"
           href={contract}

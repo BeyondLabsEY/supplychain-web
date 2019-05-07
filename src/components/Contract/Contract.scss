@@ -1,4 +1,12 @@
+@import "../../assets/scss/abstracts/animations";
+
 .contract-info {
-  padding: 3rem 0;
+  padding: 3rem 0 2.5rem;
   text-align: center;
+  & > a {
+    z-index: -1;
+  }
+  &.loading {
+    @extend .blinking;
+  }
 }
