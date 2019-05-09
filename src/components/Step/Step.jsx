@@ -11,8 +11,8 @@ class Step extends Component {
   }
 
   render() {
-    const { id, title, icon, disabled, current, truckId } = this.props;
-    const stepClass = (disabled) ? "step" : (current) ? "enabled current step" : "enabled step";
+    const { id, title, icon, disabled, truckId } = this.props;
+    const stepClass = (disabled) ? "step" : "enabled step";
     const titleClass = (disabled) ? "title disabled" : "title";
     const popoverElementId = `popover${this.capitalize(icon)}`;
     const btnElementId = `btnToggle${this.capitalize(icon)}`;
@@ -23,7 +23,7 @@ class Step extends Component {
           <span aria-hidden="true">{title}</span>
         </div>
         <MDBPopover placement="top" popover clickable id={popoverElementId}>
-          <MDBBtn color="primary" disabled={disabled} className={(current) ? "indicator current" : "indicator"} type="button" id={btnElementId} aria-label={title}>
+          <MDBBtn color="primary" disabled={disabled} className="indicator" type="button" id={btnElementId} aria-label={title}>
             <Icon name={icon} size={48} />
           </MDBBtn>
           <MDBPopoverBody>

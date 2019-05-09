@@ -17,6 +17,8 @@ $icon-size: 48px;
   .title {
     color: $ey-link-blue;
     font-size: .975em;
+    -webkit-transition: color $default-transition;
+    transition: color $default-transition;
     span {
       display: block;
       margin: 0 auto;
@@ -44,42 +46,28 @@ $icon-size: 48px;
       display: initial !important;
     }
   }
-  &:after,
   &:before {
     position: absolute;
     bottom: $icon-size - $border-size;
     z-index: -1;
-    width: 50%;
+    width: 100%;
     height: $icon-size / 2;
     background-color: $white;
     content: "";
     -webkit-transition: background-color $default-transition;
     transition: background-color $default-transition;
   }
-  &:after {
-    right: 0;
-  }
   &:before {
-    left: 0;
+    left: -50%;
   }
   &:first-child {
     &:before {
       display: none;
     }
   }
-  &:last-child {
-    &:after {
-      display: none;
-    }
-  }
   &.enabled {
     &:before {
       background-color: $ey-link-blue;
-    }
-    &:not(.current) {
-      &:after {
-        background-color: $ey-link-blue;
-      }
     }
   }
 }

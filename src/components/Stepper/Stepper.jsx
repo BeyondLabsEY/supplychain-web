@@ -55,7 +55,6 @@ class Stepper extends Component {
         title={step.title}
         icon={step.icon}
         disabled={step.disable}
-        current={step.current}
         truckId={truckId}
         key={step.id}
       />

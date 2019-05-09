@@ -1,7 +1,7 @@
 # EY Supply Chain
 
 <p>
-  <img src="./screenshot.png" alt="Tela da aplicação EY Supply Chain" />
+  <img src="./screenshot.jpg" alt="Tela da aplicação" />
 </p>
 
 Esta aplicação consiste em exibir dados coletados e armazenados em Blockchain a por meio de sensores de temperatura e umidade.

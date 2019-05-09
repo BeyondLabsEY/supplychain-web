@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import { MDBContainer } from "mdbreact";
 
 import "./Footer.scss";
-import LogoBeyondLabs from "../../assets/img/beyondlabs.png";
+import Logo from "../../assets/img/logo-beyondlabsey.png";
 
 class Footer extends Component {
   render() {
@@ -11,7 +11,7 @@ class Footer extends Component {
         <MDBContainer>
           <div className="row justify-content-center">
             <div className="col-auto">
-              <img className="logo" src={LogoBeyondLabs} alt="Logo do BeyondLabs" />
+              <img className="logo" src={Logo} alt="Logo do Beyond Labs" />
             </div>
           </div>
           <div className="row justify-content-center">

@@ -16,17 +16,20 @@ class Truck extends Component {
       truck: {
         truckId: null,
       },
-      firstLoaded: false
+      loading: true
     };
   }
 
   fetchTruckData() {
+    this.setState({
+      loading: true
+    });
     fetch(`${API_URL}/${API_VERSION}/${TRUCK_ENDPOINT}`).then(response => response.json()).then((data) => {
       this.setState({
         truck: data || {
           truckId: null
         },
-        firstLoaded: true
+        loading: false
       });
     });
   }
@@ -41,15 +44,15 @@ class Truck extends Component {
   }
 
   render() {
-    const { truck, firstLoaded } = this.state;
+    const { truck, loading } = this.state;
     const { truckId } = truck;
+    const valid = ! loading && truckId;
+    const info = valid ? `Caminhão #${truckId}` : "Buscando caminhão...";
 
     return (
       <Fragment>
         <Stepper truckId={truckId} />
-        <div className="truck-info">
-          {(firstLoaded) ? <p>Caminhão #{truckId}</p> : <p>Buscando caminhão...</p>}
-        </div>
+        <div className="truck-info">{info}</div>
       </Fragment>
     );
   }
