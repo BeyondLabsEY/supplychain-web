@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import { MDBBtn } from "mdbreact";
 
 import "./Contract.scss";
+import Icon from "../Icon/Icon.jsx";
 
 const API_URL = "https://ikfprgiyxd.execute-api.us-east-1.amazonaws.com";
 const API_VERSION = "v1";
@@ -52,7 +53,8 @@ class Contract extends Component {
           color="primary"
           size="sm"
           disabled={notLoaded}>
-            <span>Ver transações</span>
+            <span className="mr-2 ml-1">Ver transações</span>
+            <Icon name="forward" />
           </MDBBtn>
       </div>
     );

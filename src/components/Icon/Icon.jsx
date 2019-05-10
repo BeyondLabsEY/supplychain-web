@@ -8,15 +8,19 @@ class Icon extends Component {
     
     switch (size) {
       case 18:
+      case "18":
         className = "size-18";
         break;
       case 24:
+      case "24":
         className = "size-24";
         break;
       case 36:
+      case "36":
         className = "size-36";
         break;
       case 48:
+      case "48":
         className = "size-48";
         break;
       default:
@@ -26,9 +30,14 @@ class Icon extends Component {
   }
 
   render() {
-    const { name, size } = this.props;
+    const { name, size, className } = this.props;
     const sizeClass = this.sizeToClassName(size);
-    const iconClass = (sizeClass) ? `icon-${name} ${sizeClass}` : `icon-${name}`;
+    
+    let iconClass = [];
+    iconClass.push(`icon-${name}`);
+    if (sizeClass) iconClass.push(sizeClass);
+    if (className) iconClass.push(className);
+    iconClass = iconClass.join(" ");
 
     return (
       <i className={iconClass} aria-hidden="true" />

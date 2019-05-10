@@ -24,7 +24,7 @@ class Step extends Component {
         </div>
         <MDBPopover placement="top" popover clickable id={popoverElementId}>
           <MDBBtn color="primary" disabled={disabled} className="indicator" type="button" id={btnElementId} aria-label={title}>
-            <Icon name={icon} size={48} />
+            <Icon name={icon} size="48" />
           </MDBBtn>
           <MDBPopoverBody>
             <Tabs truckId={truckId} stepId={id} />

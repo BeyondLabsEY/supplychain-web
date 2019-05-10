@@ -19,7 +19,7 @@ $icons-font-path: "../../assets/fonts/custom-icons/" !default;
   font-weight: normal;
   font-variant: normal;
   text-transform: none;
-  line-height: 1;
+  line-height: inherit;
   vertical-align: middle;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
@@ -45,25 +45,30 @@ $icons-font-path: "../../assets/fonts/custom-icons/" !default;
   }
 }
 
-.icon-warehouse {
+.icon-industry,
+.icon-factory {
   &:before {
     content: "\e901";
+  }
+}
+
+.icon-warehouse {
+  &:before {
+    content: "\e902";
   }
 }
 
 .icon-store,
 .icon-market {
   &:before {
-    content: "\e902";
+    content: "\e903";
   }
 }
 
-.icon-temperature,
-.icon-air,
-.icon-cold,
-.icon-warm {
+.icon-forward,
+.icon-arrow-right {
   &:before {
-    content: "\e903";
+    content: "\e904";
   }
 }
 
@@ -73,13 +78,15 @@ $icons-font-path: "../../assets/fonts/custom-icons/" !default;
 .icon-drop,
 .icon-drops {
   &:before {
-    content: "\e904";
+    content: "\e905";
   }
 }
 
-.icon-industry,
-.icon-factory {
+.icon-temperature,
+.icon-air,
+.icon-cold,
+.icon-warm {
   &:before {
-    content: "\e905";
+    content: "\e906";
   }
 }
