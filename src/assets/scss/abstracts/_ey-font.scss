@@ -12,7 +12,8 @@ $ey-font-path: "../../fonts/ey-interstate/" !default;
 
 @font-face {
   font-family: "EYInterstate";
-  src: url($ey-font-path + "EYInterstate-LightItalic.ttf") format('truetype');
+  src: url($ey-font-path + "EYInterstate-LightItalic.ttf") format('truetype'),
+    url($ey-font-path + "EYInterstate-LightItalic.woff") format('woff');
   font-weight: $light;
   font-style: italic;
 }
