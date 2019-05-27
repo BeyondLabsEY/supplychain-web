@@ -3,9 +3,9 @@ $icons-font-path: "../../assets/fonts/custom-icons/" !default;
 @font-face {
   font-family: "Custom Icons";
   src:  url($icons-font-path + "CustomIcons.eot");
-  src:  url($icons-font-path + "CustomIcons.eot#iefix") format("embedded-opentype"),
-    url($icons-font-path + "CustomIcons.ttf") format("truetype"),
+  src:  url($icons-font-path + "CustomIcons.eot?#iefix") format("embedded-opentype"),
     url($icons-font-path + "CustomIcons.woff") format("woff"),
+    url($icons-font-path + "CustomIcons.ttf") format("truetype"),
     url($icons-font-path + "CustomIcons.svg#CustomIcons") format("svg");
   font-style: normal;
   font-weight: normal;
