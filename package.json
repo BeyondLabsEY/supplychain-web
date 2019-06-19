@@ -1,22 +1,28 @@
 {
   "name": "supplychain-web",
-  "version": "1.0.0",
-  "description": "",
+  "version": "1.1.0",
+  "description": "An application that displays the temperature and humidity data stored in Blockchain.",
+  "keywords": [
+    "supply chain",
+    "temperature sensor",
+    "humidity sensor",
+    "blockchain"
+  ],
+  "homepage": "http://bck-supply-chain.s3-website-us-east-1.amazonaws.com",
+  "license": "ISC",
+  "author": "Eduardo Basso <eduardo.basso@br.ey.com>",
+  "contributors": [
+    "Danilo Zabeu <danilo.zabeu@br.ey.com>"
+  ],
   "main": "index.js",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/BeyondLabsEY/supplychain-web.git"
+  },
   "scripts": {
     "dev": "webpack-dev-server --mode development --open",
     "build": "webpack --mode production --progress"
   },
-  "keywords": [
-    "supply",
-    "chain",
-    "temperature",
-    "umidity",
-    "blockchain"
-  ],
-  "author": "Eduardo Basso <eduardo.basso@br.ey.com> (https://eduardobasso.github.io/)",
-  "contributors": [],
-  "license": "ISC",
   "devDependencies": {
     "@babel/core": "^7.4.3",
     "@babel/preset-env": "^7.4.3",
