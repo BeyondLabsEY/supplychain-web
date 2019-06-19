@@ -6,7 +6,8 @@
     "supply chain",
     "temperature sensor",
     "humidity sensor",
-    "blockchain"
+    "blockchain",
+    "iot"
   ],
   "homepage": "http://bck-supply-chain.s3-website-us-east-1.amazonaws.com",
   "license": "ISC",
