@@ -9,12 +9,18 @@ $ey-font-path: "../fonts/ey-interstate/";
 $image-path: "../img" !default;
 
 html {
+  // background: $ey-gray-tint3;
+  // background: linear-gradient(to right, transparentize($ey-gray-tint3, 0.1), transparentize($ey-gray-tint3, 0.2)), url($image-path + '/bg.jpg');
+  // background-repeat: no-repeat;
+  // background-position: bottom right;
+  // background-attachment: fixed;
+  // background-size: cover;
   background: $ey-gray-tint3;
-  background: linear-gradient(to right, transparentize($ey-gray-tint3, 0.1), transparentize($ey-gray-tint3, 0.2)), url($image-path + '/bg.jpg');
+  background: url($image-path + '/bg-city.svg'), linear-gradient(to bottom, transparentize($ey-gray-tint3, 0.2), transparentize($ey-new-gray, 0.5));
   background-repeat: no-repeat;
   background-position: bottom right;
   background-attachment: fixed;
-  background-size: cover;
+  background-size: contain;
   font-size: 18px;
 }
 

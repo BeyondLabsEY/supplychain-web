@@ -34,7 +34,7 @@ class Truck extends Component {
 
     Axios.get(TRUCK, {
       params: {
-        truckCode: 1
+        truckCode: this.props.match.params.truckCode
       }
     }).catch(() => {
       console.log("ERROR");

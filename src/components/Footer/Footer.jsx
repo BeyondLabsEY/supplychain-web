@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import { MDBContainer } from "mdbreact";
 
 import "./Footer.scss";
-import Logo from "../../assets/img/logo-beyondlabsey.png";
+import Logo from "../../assets/img/logo-beyondlabsey-white.png";
 
 class Footer extends Component {
   render() {
