@@ -1,11 +1,15 @@
-import React, { Component, Fragment } from "react";
+import React, { Component } from "react";
+import { MDBContainer } from "mdbreact";
+import Axios from "axios";
 
 import "./Truck.scss";
-import Stepper from "../Stepper/Stepper.jsx";
+import { TRUCK } from "../../data/endpoints";
+import { DEFAULT_TRANSITION } from "../../data/defaults";
 
-const API_URL = "https://ikfprgiyxd.execute-api.us-east-1.amazonaws.com";
-const API_VERSION = "v1";
-const TRUCK_ENDPOINT = "truck";
+import Contract from "../Contract/Contract.jsx";
+import Stepper from "../Stepper/Stepper.jsx";
+import Wrapper from "../Wrapper/Wrapper.jsx";
+
 const REQUEST_INTERVAL_SECONDS = 30;
 
 class Truck extends Component {
@@ -14,28 +18,66 @@ class Truck extends Component {
 
     this.state = {
       truck: {
-        truckId: null,
+        truckId: null
       },
-      loading: true
+      loading: true,
+      pageReady: false
     };
   }
 
   fetchTruckData() {
-    this.setState({
-      loading: true
-    });
-    fetch(`${API_URL}/${API_VERSION}/${TRUCK_ENDPOINT}`).then(response => response.json()).then((data) => {
+    if (! this.state.loading) {
       this.setState({
-        truck: data || {
-          truckId: null
-        },
-        loading: false
+        loading: true
       });
+    }
+
+    Axios.get(TRUCK, {
+      params: {
+        truckCode: 1
+      }
+    }).catch(() => {
+      console.log("ERROR");
+    }).then(response => {
+      let truckId;
+      try {
+        truckId = response.data.truckId;
+      } catch {
+        truckId = null;
+      }
+
+      if (truckId) {
+        this.setState({
+          truck: {
+            truckId
+          },
+          loading: false
+        });
+      }
+    });
+  }
+
+  changeTruck() {
+    this.leavePage();
+
+    setTimeout(() => this.props.history.push("/"), DEFAULT_TRANSITION);
+  }
+
+  enterPage() {
+    this.setState({
+      pageReady: true
+    });
+  }
+
+  leavePage() {
+    this.setState({
+      pageReady: false
     });
   }
 
   componentDidMount() {
-    this.fetchTruckData()
+    this.enterPage();
+    this.fetchTruckData();
     this.inverval = setInterval(() => (this.fetchTruckData()), (REQUEST_INTERVAL_SECONDS * 1000));
   }
 
@@ -44,16 +86,27 @@ class Truck extends Component {
   }
 
   render() {
-    const { truck, loading } = this.state;
+    const { truck, loading, pageReady } = this.state;
     const { truckId } = truck;
     const valid = ! loading && truckId;
     const info = valid ? `Caminhão #${truckId}` : "Buscando caminhão...";
 
     return (
-      <Fragment>
-        <Stepper truckId={truckId} />
-        <div className="truck-info">{info}</div>
-      </Fragment>
+      <Wrapper active={pageReady} from="right">
+        <MDBContainer>
+          <div className="row">
+            <div className="col">
+              <Stepper truckId={truckId} />
+              <div className="truck-info">{info}</div>
+            </div>
+          </div>
+          <div className="row">
+            <div className="col">
+              <Contract />
+            </div>
+          </div>
+        </MDBContainer>
+      </Wrapper>
     );
   }
 }

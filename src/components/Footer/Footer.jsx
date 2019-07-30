@@ -9,14 +9,12 @@ class Footer extends Component {
     return (
       <footer>
         <MDBContainer>
-          <div className="row justify-content-center">
-            <div className="col-auto">
-              <img className="logo" src={Logo} alt="Logo do Beyond Labs" />
-            </div>
-          </div>
-          <div className="row justify-content-center">
-            <div className="col-auto">
-              <p lang="en" translate="no">Created by BeyondLabsEY</p>
+          <div className="row">
+            <div className="col">
+              <div className="mb-2">
+                <img className="img-fluid logo" src={Logo} alt="BeyondLabs logo" />
+              </div>
+              <p>Created by BeyondLabsEY</p>
             </div>
           </div>
         </MDBContainer>
