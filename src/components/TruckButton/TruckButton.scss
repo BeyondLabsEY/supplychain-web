@@ -13,6 +13,7 @@ $select-button-size: 290px;
   min-width: $select-button-size;
   min-height: $select-button-size;
   overflow: hidden;
+  border-radius: $default-border-radius * 2;
   padding: 0;
   .truck-img {
     width: $select-button-size * .7;

@@ -1,14 +1,12 @@
 import React, { Component } from "react";
 import { MDBBtn } from "mdbreact";
+import Axios from "axios";
 
 import "./Contract.scss";
-import Icon from "../Icon/Icon.jsx";
+import { CONTRACT } from "../../data/endpoints";
+import { REQUEST_INTERVAL_SECONDS, REQUEST_TIMEOUT_SECONDS } from "../../data/defaults";
 
-const API_URL = "https://ikfprgiyxd.execute-api.us-east-1.amazonaws.com";
-const API_VERSION = "v1";
-const CONTRACT_ENDPOINT = "contract";
-const REQUEST_TIMEOUT_SECONDS = 5;
-const REQUEST_INTERVAL_SECONDS = 30;
+import Icon from "../Icon/Icon.jsx";
 
 class Contract extends Component {
   constructor(props) {
@@ -21,11 +19,20 @@ class Contract extends Component {
   }
 
   fetchContractData() {
-    fetch(`${API_URL}/${API_VERSION}/${CONTRACT_ENDPOINT}`).then(response => response.json()).then((data) => {
-      this.setState({
-        contract: data.value,
-        firstLoaded: true
-      });
+    Axios.get(CONTRACT).then(response => {
+      let contract;
+      try {
+        contract = response.data.value;
+      } catch {
+        contract = null;
+      }
+
+      if (contract) {
+        this.setState({
+          contract,
+          firstLoaded: true
+        });
+      }
     });
   }
 
@@ -51,10 +58,11 @@ class Contract extends Component {
           target="blank"
           role="button"
           color="primary"
+          outline
           size="sm"
           disabled={notLoaded}>
             <span className="mr-2 ml-1">Ver transações</span>
-            <Icon name="forward" />
+            <Icon name="new-tab" />
           </MDBBtn>
       </div>
     );

@@ -1,16 +1,17 @@
 import React, { Component } from "react";
-import { MDBContainer } from "mdbreact";
+import { MDBContainer, MDBBtn } from "mdbreact";
 import Axios from "axios";
 
 import "./Truck.scss";
+import Truck1 from "../../assets/img/truck-1.png";
+import Truck2 from "../../assets/img/truck-2.png";
 import { TRUCK } from "../../data/endpoints";
-import { DEFAULT_TRANSITION } from "../../data/defaults";
+import { DEFAULT_TRANSITION, REQUEST_INTERVAL_SECONDS } from "../../data/defaults";
 
+import Icon from "../Icon/Icon.jsx";
 import Contract from "../Contract/Contract.jsx";
 import Stepper from "../Stepper/Stepper.jsx";
 import Wrapper from "../Wrapper/Wrapper.jsx";
-
-const REQUEST_INTERVAL_SECONDS = 30;
 
 class Truck extends Component {
   constructor(props) {
@@ -23,6 +24,7 @@ class Truck extends Component {
       loading: true,
       pageReady: false
     };
+    this.changeTruck = this.changeTruck.bind(this);
   }
 
   fetchTruckData() {
@@ -36,8 +38,6 @@ class Truck extends Component {
       params: {
         truckCode: this.props.match.params.truckCode
       }
-    }).catch(() => {
-      console.log("ERROR");
     }).then(response => {
       let truckId;
       try {
@@ -88,8 +88,10 @@ class Truck extends Component {
   render() {
     const { truck, loading, pageReady } = this.state;
     const { truckId } = truck;
+    const truckName = (truck == 1) ? "Redentor" : "Falcão"; 
+    const truckImg = (truck == 1) ? Truck1 : Truck2; 
     const valid = ! loading && truckId;
-    const info = valid ? `Caminhão #${truckId}` : "Buscando caminhão...";
+    const info = valid ? truckName.toUpperCase() : "Buscando dados do caminhão...";
 
     return (
       <Wrapper active={pageReady} from="right">
@@ -97,7 +99,18 @@ class Truck extends Component {
           <div className="row">
             <div className="col">
               <Stepper truckId={truckId} />
-              <div className="truck-info">{info}</div>
+              <div className="truck-info">
+                <div className="mr-2">
+                  <span className="d-block">{info}</span>
+                </div>
+                <img className="truck-img" src={truckImg} />
+              </div>
+              <div className="change-truck">
+                <MDBBtn color="link" size="sm" id="btnChangeTruck" onClick={this.changeTruck}>
+                  <Icon name="backward" />
+                  <span className="ml-2">Trocar caminhão</span>
+                </MDBBtn>
+              </div>
             </div>
           </div>
           <div className="row">

@@ -41,8 +41,41 @@ $image-path: "~mdbreact/dist/img";
   }
 }
 
+.btn-outline-primary {
+  box-shadow: none;
+  border-color: $ey-link-blue !important;
+  color: $ey-link-blue !important;
+  &:not([disabled]) {
+    &:not(.disabled) {
+      &:active,
+      &.active {
+        border-color: darken($ey-link-blue, 10%) !important;
+        background-color: darken($ey-link-blue, 10%) !important;
+        color: $white !important;
+      }
+      &:focus,
+      &.focus {
+        border-color: $ey-link-blue !important;
+        background-color: $ey-link-blue !important;
+        color: $white !important;
+      }
+      &:hover,
+      &.hover {
+        border-color: $ey-link-blue !important;
+        background-color: $ey-link-blue !important;
+        color: $white !important;
+      }
+    }
+  }
+  &.disabled,
+  &:disabled {
+    border-color: $ey-gray-tint2 !important;
+    color: $ey-gray-tint1 !important;
+  }
+}
+
 .btn-sm {
-  border-radius: 10em;
+  border-radius: $default-border-radius * 2;
   font-size: .625rem;
 }
 

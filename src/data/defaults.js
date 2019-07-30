@@ -1,1 +1,4 @@
 export const DEFAULT_TRANSITION = 150;
+
+export const REQUEST_INTERVAL_SECONDS = 30;
+export const REQUEST_TIMEOUT_SECONDS = 5;

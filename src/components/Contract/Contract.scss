@@ -1,7 +1,8 @@
+@import "../../assets/scss/abstracts/ey-colors";
 @import "../../assets/scss/abstracts/animations";
 
 .contract-info {
-  padding: 3rem 0 2.5rem;
+  padding: 3rem 0 0;
   text-align: center;
   & > a {
     z-index: 0;

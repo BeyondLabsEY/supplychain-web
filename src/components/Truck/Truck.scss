@@ -1,9 +1,31 @@
+@import "../../assets/scss/abstracts/ey-colors";
+
+$truck-img-size: 64px;
+
 .truck-info {
   position: fixed;
   top: 0;
   right: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   padding: .75rem 1rem;
-  text-align: center;
+  color: $ey-gray;
   font-size: .625em;
-  opacity: .5;
+  text-align: center;
+  .truck-img {
+    max-width: $truck-img-size;
+    max-height: $truck-img-size;
+    opacity: .5;
+  }
+}
+
+.change-truck {
+  position: fixed;
+  top: 0;
+  left: 0;
+  & > button {
+    margin: 0;
+    padding: .75rem 1rem !important;
+  }
 }
