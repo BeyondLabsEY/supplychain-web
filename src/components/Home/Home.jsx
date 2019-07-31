@@ -2,8 +2,7 @@ import React, { Component } from "react";
 import { MDBContainer } from "mdbreact";
 
 import "./Home.scss";
-import Truck1 from "../../assets/img/truck-1.png";
-import Truck2 from "../../assets/img/truck-2.png";
+import { trucksData } from "../../data/trucks";
 import { DEFAULT_TRANSITION } from "../../data/defaults";
 
 import TruckButton from "../TruckButton/TruckButton.jsx";
@@ -42,6 +41,17 @@ class Home extends Component {
   }
 
   render() {
+    const Trucks = trucksData.map((truck, index) =>
+      <div className="col-auto" key={index}>
+        <TruckButton
+          number={truck.number}
+          name={truck.name}
+          image={truck.image}
+          onClick={this.chooseTruck}
+        />
+      </div>
+    );
+
     return(
       <Wrapper active={this.state.pageReady} from="left">
         <MDBContainer>
@@ -51,12 +61,7 @@ class Home extends Component {
               </div>
             </div>
             <div className="row justify-content-center">
-              <div className="col-auto">
-                <TruckButton number="1" name="Redentor" image={Truck1} onClick={this.chooseTruck} />
-              </div>
-              <div className="col-auto">
-                <TruckButton number="2" name="Falcão" image={Truck2} onClick={this.chooseTruck} />
-              </div>
+              {Trucks}
             </div>
           </MDBContainer>
       </Wrapper>

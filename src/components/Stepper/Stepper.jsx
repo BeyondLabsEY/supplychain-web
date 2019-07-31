@@ -1,14 +1,13 @@
 import React, { Component } from "react";
-import _ from 'lodash';
+import Axios from "axios";
+import _ from "lodash";
 
 import "./Stepper.scss";
-import stepsData from "./stepsData";
-import Step from "../Step/Step.jsx";
+import stepsData from "../../data/steps";
+import { STEPS } from "../../data/endpoints";
+import { REQUEST_INTERVAL_SECONDS } from "../../data/defaults";
 
-const API_URL = "https://ikfprgiyxd.execute-api.us-east-1.amazonaws.com";
-const API_VERSION = "v1";
-const STEPS_ENDPOINT = "steps";
-const REQUEST_INTERVAL_SECONDS = 5;
+import Step from "../Step/Step.jsx";
 
 class Stepper extends Component {
   constructor(props) {
@@ -22,11 +21,21 @@ class Stepper extends Component {
 
   fetchStepsData() {
     const { truckId } = this.props;
-    
     if (truckId) {
-      fetch(`${API_URL}/${API_VERSION}/${STEPS_ENDPOINT}?truck=${truckId}`).then(response => response.json()).then((data) => {
+      Axios.get(STEPS, {
+        params: {
+          truck: truckId
+        }
+      }).then(response => {
+        let steps;
+        try {
+          steps = response.data.slice(0, 4);
+        } catch {
+          steps = stepsData;
+        }
+
         this.setState({
-          steps: data || stepsData,
+          steps,
           firstLoaded: true
         });
       });
@@ -38,7 +47,7 @@ class Stepper extends Component {
   }
 
   componentDidMount() {
-    this.inverval = setInterval(() => (this.fetchStepsData()), (REQUEST_INTERVAL_SECONDS * 1000));
+    this.inverval = setInterval(() => (this.fetchStepsData()), ((REQUEST_INTERVAL_SECONDS / 6) * 1000));
   }
 
   componentWillUnmount() {
@@ -49,14 +58,14 @@ class Stepper extends Component {
     const { truckId } = this.props;
     const { steps, firstLoaded } = this.state;
     const stepperClass = (firstLoaded) ? "stepper" : "stepper loading";
-    const Steps = steps.map(step =>
+    const Steps = steps.map((step, index) =>
       <Step
         id={step.id}
         title={step.title}
         icon={step.icon}
         disabled={step.disable}
         truckId={truckId}
-        key={step.id}
+        key={index}
       />
     );
 

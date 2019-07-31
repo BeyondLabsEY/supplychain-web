@@ -1,22 +1,52 @@
 @import "../../assets/scss/abstracts/ey-colors";
+@import "../../assets/scss/abstracts/variables";
 
+$truck-info-padding: .75rem 1rem;
 $truck-img-size: 64px;
 
-.truck-info {
+.truck-info,
+.loading-truck {
   position: fixed;
   top: 0;
   right: 0;
   display: flex;
   justify-content: center;
   align-items: center;
-  padding: .75rem 1rem;
+  padding: $truck-info-padding;
+}
+
+.truck-info {
   color: $ey-gray;
-  font-size: .625em;
+  font-size: .675em;
   text-align: center;
-  .truck-img {
-    max-width: $truck-img-size;
-    max-height: $truck-img-size;
-    opacity: .5;
+  .truck-name {
+    display: block;
+    font-weight: $bold;
+    text-transform: uppercase;
+  }
+  .sensor-info {
+    display: block;
+    font-size: .875em;
+    font-weight: $light;
+  }
+  .truck-img-container {
+    width: $truck-img-size;
+    height: $truck-img-size;
+    .truck-img {
+      max-width: $truck-img-size;
+      max-height: $truck-img-size;
+      opacity: .5;
+    }
+  }
+}
+
+.loading-truck {
+  .loading-truck-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: $truck-img-size;
+    height: $truck-img-size;
   }
 }
 
@@ -25,7 +55,6 @@ $truck-img-size: 64px;
   top: 0;
   left: 0;
   & > button {
-    margin: 0;
-    padding: .75rem 1rem !important;
+    padding: $truck-info-padding !important;
   }
 }

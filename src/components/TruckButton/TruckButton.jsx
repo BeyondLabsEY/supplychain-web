@@ -9,7 +9,7 @@ class TruckButton extends Component {
   render() {
     const { number, name, image, onClick } = this.props;
     const buttonId = `btnSelectTruck${number}`;
-    const imageAlt = `Caminhão número ${number}`;
+    const imageAlt = `Foto do ${name}`;
 
     return(
       <MDBBtn color="light" className="truck-select" type="button" id={buttonId} onClick={() => onClick(number)}>

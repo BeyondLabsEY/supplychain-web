@@ -47,22 +47,16 @@ $image-path: "~mdbreact/dist/img";
   color: $ey-link-blue !important;
   &:not([disabled]) {
     &:not(.disabled) {
+      &:focus, &.focus,
+      &:hover, &.hover {
+        border-color: $ey-link-blue !important;
+        background-color: $ey-link-blue !important;
+        color: $white !important;
+      }
       &:active,
       &.active {
         border-color: darken($ey-link-blue, 10%) !important;
         background-color: darken($ey-link-blue, 10%) !important;
-        color: $white !important;
-      }
-      &:focus,
-      &.focus {
-        border-color: $ey-link-blue !important;
-        background-color: $ey-link-blue !important;
-        color: $white !important;
-      }
-      &:hover,
-      &.hover {
-        border-color: $ey-link-blue !important;
-        background-color: $ey-link-blue !important;
         color: $white !important;
       }
     }

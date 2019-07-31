@@ -1,9 +1,9 @@
 import React, { Component } from "react";
-import Highcharts from 'highcharts';
-import HighchartsReact from 'highcharts-react-official';
-import _ from 'lodash';
+import Highcharts from "highcharts";
+import HighchartsReact from "highcharts-react-official";
+import _ from "lodash";
 
-import optionsData from "./optionsData";
+import { chartOptionsData } from "../../data/chartOptions";
 
 class Chart extends Component {
   constructor(props) {
@@ -11,7 +11,7 @@ class Chart extends Component {
 
     this.state = {
       chartElementId: this.props.id || "chart",
-      chartOptions: _.merge(optionsData, props.options)
+      chartOptions: _.merge(chartOptionsData, props.options)
     };
   }
 

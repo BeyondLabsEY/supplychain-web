@@ -1,10 +1,10 @@
 import React, { Component } from "react";
 import { MDBContainer, MDBBtn } from "mdbreact";
+import ReactLoading from "react-loading";
 import Axios from "axios";
 
 import "./Truck.scss";
-import Truck1 from "../../assets/img/truck-1.png";
-import Truck2 from "../../assets/img/truck-2.png";
+import { truckData } from "../../data/trucks";
 import { TRUCK } from "../../data/endpoints";
 import { DEFAULT_TRANSITION, REQUEST_INTERVAL_SECONDS } from "../../data/defaults";
 
@@ -19,8 +19,11 @@ class Truck extends Component {
 
     this.state = {
       truck: {
-        truckId: null
+        id: null,
+        name: null,
+        image: null
       },
+      sensor: null,
       loading: true,
       pageReady: false
     };
@@ -34,23 +37,37 @@ class Truck extends Component {
       });
     }
 
+    let truckCode;
+    try {
+      truckCode = this.props.match.params.truckCode;
+    } catch {
+      truckCode = 1
+    }
+
     Axios.get(TRUCK, {
       params: {
-        truckCode: this.props.match.params.truckCode
+        truckCode
       }
     }).then(response => {
-      let truckId;
+      let id, sensor;
       try {
-        truckId = response.data.truckId;
+        id = response.data.truckId;
+        sensor = response.data.idLastSensorData;
       } catch {
-        truckId = null;
+        id = null;
+        sensor = null;
       }
 
-      if (truckId) {
+      if (id) {
+        const { name, image } = truckData[truckCode];
+        
         this.setState({
           truck: {
-            truckId
+            id,
+            name,
+            image
           },
+          sensor,
           loading: false
         });
       }
@@ -86,29 +103,45 @@ class Truck extends Component {
   }
 
   render() {
-    const { truck, loading, pageReady } = this.state;
-    const { truckId } = truck;
-    const truckName = (truck == 1) ? "Redentor" : "Falcão"; 
-    const truckImg = (truck == 1) ? Truck1 : Truck2; 
-    const valid = ! loading && truckId;
-    const info = valid ? truckName.toUpperCase() : "Buscando dados do caminhão...";
+    const { truck, sensor, loading, pageReady } = this.state;
+    const { id, name, image } = truck;
+    const imageAlt = `Foto do ${name}`;
+    const sensorInfo = `Sensor #${sensor}`;
+    const valid = ! loading && id;
 
     return (
       <Wrapper active={pageReady} from="right">
         <MDBContainer>
           <div className="row">
             <div className="col">
-              <Stepper truckId={truckId} />
-              <div className="truck-info">
-                <div className="mr-2">
-                  <span className="d-block">{info}</span>
+              <Stepper truckId={id} />
+              {valid ?
+                <div className="truck-info">
+                  <div className="mr-2">
+                    <span className="truck-name">{name}</span>
+                    <span className="sensor-info">{sensorInfo}</span>
+                  </div>
+                  <div className="truck-img-container">
+                    <img className="truck-img" src={image} alt={imageAlt} />
+                  </div>
                 </div>
-                <img className="truck-img" src={truckImg} />
-              </div>
+              :
+                <div className="loading-truck">
+                  <div className="loading-truck-container">
+                    <ReactLoading
+                      type="bubbles"
+                      color="#808080"
+                      width={32}
+                      height={32}
+                    />
+                    <span className="sr-only">Carregando...</span>
+                  </div>
+                </div>
+              }
               <div className="change-truck">
                 <MDBBtn color="link" size="sm" id="btnChangeTruck" onClick={this.changeTruck}>
                   <Icon name="backward" />
-                  <span className="ml-2">Trocar caminhão</span>
+                  <span className="ml-2">Voltar</span>
                 </MDBBtn>
               </div>
             </div>

@@ -1,15 +1,13 @@
 import React, { Component, Fragment } from "react";
-import ReactLoading from 'react-loading';
+import ReactLoading from "react-loading";
+import Axios from "axios";
 
 import "./Tabs.scss";
-import temperatureChartData from "./temperatureChartData";
-import humidityChartData from "./humidityChartData";
+import { temperatureChartOptionsData, humidityChartOptionsData } from "../../data/chartOptions";
+import { SENSOR } from "../../data/endpoints";
+
 import Icon from "../Icon/Icon.jsx";
 import Chart from "../Chart/Chart.jsx";
-
-const API_URL = "https://ikfprgiyxd.execute-api.us-east-1.amazonaws.com";
-const API_VERSION = "v1";
-const SENSOR_ENDPOINT = "sensor";
 
 class Tabs extends Component {
   constructor(props) {
@@ -25,8 +23,8 @@ class Tabs extends Component {
         }
       },
       chartOptions: {
-        temperature: temperatureChartData,
-        humidity: humidityChartData
+        temperature: temperatureChartOptionsData,
+        humidity: humidityChartOptionsData
       },
       firstLoaded: false
     };
@@ -49,14 +47,24 @@ class Tabs extends Component {
   fetchData() {
     const { truckId, stepId } = this.props;
 
-    fetch(`${API_URL}/${API_VERSION}/${SENSOR_ENDPOINT}/?truck=${truckId}&step=${stepId}`).then(response => response.json()).then((data) => {
-      temperatureChartData.series[0].data = data.t.map((point) => [point.d, point.t]);
-      humidityChartData.series[0].data = data.h.map((point) => [point.d, point.h]);
+    Axios.get(SENSOR, {
+      params: {
+        truck: truckId,
+        step: stepId
+      }
+    }).then(response => {
+      try {
+        temperatureChartOptionsData.series[0].data = response.data.t.map((point) => [point.d, point.t]);
+        humidityChartOptionsData.series[0].data = response.data.h.map((point) => [point.d, point.h]);
+      } catch {
+        temperatureChartOptionsData.series[0].data = [];
+        humidityChartOptionsData.series[0].data = [];
+      }
 
       this.setState({
         chartOptions: {
-          temperature: temperatureChartData,
-          humidity: humidityChartData
+          temperature: temperatureChartOptionsData,
+          humidity: humidityChartOptionsData
         },
         firstLoaded: true
       });
@@ -104,6 +112,7 @@ class Tabs extends Component {
                 height={48}
                 width={48}
               />
+              <span className="sr-only">Carregando...</span>
             </div>
           </div>
         );

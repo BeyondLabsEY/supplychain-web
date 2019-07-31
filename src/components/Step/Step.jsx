@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import { MDBPopover, MDBPopoverBody, MDBBtn } from "mdbreact";
 
 import "./Step.scss";
+
 import Icon from "../Icon/Icon.jsx";
 import Tabs from "../Tabs/Tabs.jsx";
 

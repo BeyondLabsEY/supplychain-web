@@ -60,7 +60,8 @@ class Contract extends Component {
           color="primary"
           outline
           size="sm"
-          disabled={notLoaded}>
+          disabled={notLoaded}
+          id="btnViewTransactions">
             <span className="mr-2 ml-1">Ver transações</span>
             <Icon name="new-tab" />
           </MDBBtn>
