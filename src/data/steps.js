@@ -1,25 +1,25 @@
 const stepsData = [
   {
     id: "1",
-    title: "Fazenda",
+    title: "Farm",
     icon: "farm",
     disable: true
   },
   {
     id: "2",
-    title: "Indústria",
+    title: "Industry",
     icon: "industry",
     disable: true
   },
   {
     id: "3",
-    title: "Centro de Distribuição",
+    title: "Distribution Center",
     icon: "warehouse",
     disable: true
   },
   {
     id: "4",
-    title: "Mercado",
+    title: "Market",
     icon: "market",
     disable: true
   }

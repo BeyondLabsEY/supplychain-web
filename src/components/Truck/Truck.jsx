@@ -134,14 +134,14 @@ class Truck extends Component {
                       width={32}
                       height={32}
                     />
-                    <span className="sr-only">Carregando...</span>
+                    <span className="sr-only">Loading...</span>
                   </div>
                 </div>
               }
               <div className="change-truck">
                 <MDBBtn color="link" size="sm" id="btnChangeTruck" onClick={this.changeTruck}>
                   <Icon name="backward" />
-                  <span className="ml-2">Voltar</span>
+                  <span className="ml-2">Back</span>
                 </MDBBtn>
               </div>
             </div>

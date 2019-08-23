@@ -112,7 +112,7 @@ class Tabs extends Component {
                 height={48}
                 width={48}
               />
-              <span className="sr-only">Carregando...</span>
+              <span className="sr-only">Loading...</span>
             </div>
           </div>
         );
@@ -125,13 +125,13 @@ class Tabs extends Component {
           <li className="nav-item">
             <a role="tab" data-toggle="pill" className={(tabs.temperature.isActive) ? "nav-link temperature-tab active" : "nav-link temperature-tab"} onClick={this.changeTab} id="aFarmTemperatureTab">
               <Icon name="temperature" />
-              <span className="tab-title">Temperatura</span>
+              <span className="tab-title">Temperature</span>
             </a>
           </li>
           <li className="nav-item">
             <a role="tab" data-toggle="pill" className={(tabs.humidity.isActive) ? "nav-link humidity-tab active" : "nav-link humidity-tab"} onClick={this.changeTab} id="aFarmHumidityTab">
               <Icon name="humidity" />
-              <span className="tab-title">Umidade</span>
+              <span className="tab-title">Humidity</span>
             </a>
           </li>
         </ul>

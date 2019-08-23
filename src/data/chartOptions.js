@@ -77,19 +77,19 @@ export const chartOptionsData = {
 
 export const temperatureChartOptionsData = {
   title: {
-    text: "Temperatura ambiente ao longo do tempo"
+    text: "Room temperature over time"
   },
 
   colors: ["#91278f"],
 
   yAxis: {
     title: {
-      text: "Temperatura (°C)"
+      text: "Temperature (°C)"
     }
   },
 
   series: [{
-    name: "Temperatura",
+    name: "Temperature",
     data: []
   }],
 
@@ -107,19 +107,19 @@ export const temperatureChartOptionsData = {
 
 export const humidityChartOptionsData = {
   title: {
-    text: "Umidade relativa do ar ao longo do tempo"
+    text: "Relative humidity over time"
   },
 
   colors: ["#00a3ae"],
   
   yAxis: {
     title: {
-      text: "Umidade (%)"
+      text: "Humidity (%)"
     }
   },
   
   series: [{
-    name: "Umidade",
+    name: "Humidity",
     data: []
   }],
 

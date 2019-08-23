@@ -62,7 +62,7 @@ class Contract extends Component {
           size="sm"
           disabled={notLoaded}
           id="btnViewTransactions">
-            <span className="mr-2 ml-1">Ver transações</span>
+            <span className="mr-2 ml-1">View Blockchain transactions</span>
             <Icon name="new-tab" />
           </MDBBtn>
       </div>

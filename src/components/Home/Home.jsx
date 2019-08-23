@@ -57,7 +57,7 @@ class Home extends Component {
         <MDBContainer>
             <div className="row justify-content-center">
               <div className="col-auto">
-                <p className="home-choose mb-4 text-center">Escolha o seu caminhão:</p>
+                <p className="home-choose mb-4 text-center">Choose your truck:</p>
               </div>
             </div>
             <div className="row justify-content-center">
