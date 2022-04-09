@@ -44,7 +44,7 @@
     "lodash.mergewith": ">=4.6.2",
     "lodash.template": ">=4.5.0",
     "mdbreact": "^4.12.0",
-    "moment": "^2.24.0",
+    "moment": "^2.29.2",
     "moment-timezone": "^0.5.23",
     "node-sass": "^4.13.1",
     "popper.js": "^1.15.0",
